@@ -1,0 +1,89 @@
+#include <stdio.h>
+#include <stdlib.h>
+int p,m;
+int sam[40320][8];
+void swap(int *x, int *y)
+{
+    int temp;
+    temp = *x;
+    *x = *y;
+    *y = temp;
+}
+void permute(int a[8], int l, int r)
+{
+    int i;
+
+   if (l == r)
+   {
+
+       for(p=0;p<8;p++)
+       {
+           sam[m][p]=a[p];
+       }
+       m++;
+   }
+   else
+   {
+       for (i = l; i <= r; i++)
+       {
+          swap((a+l), (a+i));
+          permute(a, l+1, r);
+          swap((a+l), (a+i)); //backtrack
+       }
+   }
+}
+int qfindPivot(int a[],int l,int r)
+{
+    int x=a[r],i=l,j;
+    for(j=l;j<r;j++)
+    {
+        if(a[j]<=x)
+        {
+            swap(a+i,a+j);
+            i++;
+        }
+    }
+    swap(a+i,a+j);
+    return i;
+}
+
+void quickSort(int a[],int l,int r)
+{
+    if(l<r)
+    {
+        int p=qfindPivot(a,l,r);
+        quickSort(a,l,p-1);
+        quickSort(a,p+1,r);
+    }
+}
+int main()
+{
+    long s = 71234568;
+    int i=7,j;
+    int res[8];
+    long r[40320];
+    while(i>=0)
+    {
+        res[i] = s%10;
+        s=s/10;
+        i--;
+    }
+    for(i=0;i<8;i++)
+        printf("%d",res[i]);
+    printf("\n");
+    permute(res,0,7);
+    for(i=0;i<40320;i++)
+    {
+        long x=0,mul=1;
+        for(j=7;j>=0;j--)
+        {
+            x=x+ sam[i][j]*mul;
+            mul=mul*10;
+        }
+        r[i]=x;
+    }
+    quickSort(r,0,40319);
+    for(i=0;i<40320;i++)
+        printf("%ld\n",r[i]);
+    return 0;
+}

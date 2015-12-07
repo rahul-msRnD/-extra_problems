@@ -1,0 +1,36 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
+
+int main()
+{
+    unsigned int sample = 14;
+    int pos = 33,i=0,currDigit;
+    bool carry = false, evenPower = true;
+    char result[33];
+    while(i<32)
+    {
+        result[i]='0'+0;
+        i++;
+    }
+    result[--pos] = '\0';
+
+    while (sample || carry)
+    {
+        currDigit = sample % 2;
+
+        result[--pos] = '0' + (currDigit ^ carry);
+
+        if (evenPower)
+            carry &= currDigit;
+        else
+            carry |= currDigit;
+
+        sample = sample/2;
+        evenPower = !evenPower;
+
+    }
+    printf("%s",result);
+    return 0;
+}

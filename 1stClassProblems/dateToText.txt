@@ -1,0 +1,114 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
+char months[13][10]=
+{
+    "",
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+};
+char ones[20][10] =
+{
+    "One",
+    "Two",
+    "Three",
+    "Four",
+    "Five",
+    "Six",
+    "Seven",
+    "Eight",
+    "Nine",
+    "Ten",
+    "Eleven",
+    "Twelve",
+    "Thirteen",
+    "Fourteen",
+    "Fifteen",
+    "Sixteen",
+    "Seventeen",
+    "Eighteen",
+    "Nineteen",
+};
+
+char tens[10][10] =
+{
+    "Ten",
+    "Twenty",
+    "Thirty",
+    "Forty",
+    "Fifty",
+    "Sixty",
+    "Seventy",
+    "Eighty",
+    "Ninety",
+    "Hundred"
+};
+
+void NumberToText(int num)
+{
+    char result[150];
+    int single, ten, hundreds;
+    if(num > 1000)
+        return false;
+    hundreds = num / 100;
+    num = num - hundreds * 100;
+    if( num < 20)
+    {
+        ten = 0;
+        single = num;
+    }
+    else
+    {
+        ten = num / 10;
+        num = num - ten * 10;
+        single = num;
+    }
+    memset(result, 0, 150);
+    if(hundreds)
+    {
+        strcat(result, ones[hundreds-1]);
+        strcat(result, "Hundred");
+    }
+    if(tens)
+        strcat(result, tens[ten-1]);
+    if(single)
+        strcat(result, ones[single-1]);
+    printf("%s",result);
+}
+
+void dateToText(int num)
+{
+    char result[150];
+    int thousands;
+    int temp;
+    memset(result, 0, 150);
+    if(num < 1000)
+        NumberToText(num);
+    else
+    {
+        thousands = num / 1000;
+        temp = num - thousands * 1000;
+        NumberToText(thousands, (char*) &tres, 150);
+        printf("thousand");
+        NumberToText(temp, (char*) &tres, 150);
+    }
+}
+
+int main()
+{
+    int date[] = {22,10,2015};
+    dateToText(date[0]);
+    printf(" of %s ",months[date[1]]);
+    dateToText(date[2]);
+    return 0;
+}

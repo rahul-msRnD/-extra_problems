@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <stdlib.h>
+void sort0s1s(int a[], int s)
+{
+    int l = 0, r= s-1;
+
+    while (l < r)
+    {
+        while(a[l]== 0 && l< r)
+            l++;
+        while(a[r]== 1 && l< r)
+            r--;
+        if (l< r)
+        {
+            a[l] = 0;
+            a[r] = 1;
+            l++;
+            r--;
+        }//swapping 0 and 1
+    }
+}
+
+int main()
+{
+    
+    return 0;
+}

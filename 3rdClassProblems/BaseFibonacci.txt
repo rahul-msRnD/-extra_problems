@@ -1,0 +1,77 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void print(int a[],int s)
+{
+    int i;
+    for(i=0;i<s;i++)
+        printf("%d",a[i]);
+    printf("\n");
+}
+
+void baseFib(int x)
+{
+    int i,fib=1,prev1=0,prev2,sum=1,count=0;
+    int a[20];
+    a[0]= 1;
+    for(i=1;;i++)
+    {
+        prev2=prev1;
+        prev1=fib;
+        fib=prev1+prev2;
+        a[i] = fib;
+        sum = sum+fib;
+        count++;
+        if(sum>=x)
+            break;
+    }
+
+    //printf("%d %d\n",sum,count);
+    /*int a[count+1];
+    for(i=0;i<count+1;i++)
+        a[i]=1;*/
+    if(sum==x)
+     {
+         for(i=0;i<count+1;i++)
+            a[i]=1;
+        print(a,count+1);
+     }
+    else
+    {
+        int y = sum-x,m=0,diff,j;
+        int p=0;
+
+        for(i=count-p;i>=0;i--)
+        {
+            diff = y ;
+            for(j=i;j>=0;j--)
+            {
+                if(diff >= a[j])
+                {
+                    y=diff-a[j];
+                    a[j]=0;
+                    p++;
+                    break;
+                }
+                p++;
+            }
+            if(y==0)
+                break;
+        }
+
+        for(i=0;i<count+1;i++)
+        {
+            if(a[i]!=0)
+                a[i]=1;
+        }
+        print(a,count+1);
+    }
+}
+
+int main()
+{
+    baseFib(34);
+    // expected o/p = 1 1 0 1 0 1 0 1
+    //                1 1 2 3 5 8 13 21
+    return 0;
+}

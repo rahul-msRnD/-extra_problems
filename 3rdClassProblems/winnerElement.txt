@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void winnerElement(int a[],int size,int l)
+{
+    int bound = l/2 ;
+    int i,max=0,sum,wi=0,j;
+    for(i=0;i<=bound;i++)
+        max=max+a[i];
+    for(i=0;i<size;i++)
+    {
+        sum=0;
+        for(j=i-bound;j<=i+bound;j++)
+        {
+            if(j>=0 && j<size)
+                sum = sum+a[j];
+        }
+        if(max<sum)
+        {
+            max=sum;
+            wi=i;
+        }
+    }
+    printf("%d",wi);
+}
+
+int main()
+{
+    int a[]={1,2,3,4,1,2,3};
+    winnerElement(a,7,5);
+    return 0;
+}

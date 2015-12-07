@@ -1,0 +1,9 @@
+1. addition of two numbers from left side .
+
+2. find n, where the size of the array is 2n+2. Elememts in the array will be in ascending order of upto size n ,( n+1 element > nth element ),( n+2 element < n+1 element ) and followed by n 0's. Ex: 1,2,3,4,6,5,0,0,0,0 ans: 4
+
+3. Find the base(-2) representation of a decimal number .
+
+4. multiply a 100 digit and 50 digit number.
+
+5. given a 8 digit number , generate a all the permuations of it in ascending order .

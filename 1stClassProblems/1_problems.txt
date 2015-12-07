@@ -1,0 +1,11 @@
+1. Sort an array which has 0's and 1's
+
+2. an array should have its product of its elements except that index element.
+
+3. given date in numbers. Print the date as text.
+
+4. find pow(x,y)%z , x,y,z are unsigned numbers.
+
+5. min rank of a given number . Ex: i/p:213 o/p: 2 (as 123,132,213,231,312,321 are permutations in inc order , index of 213 is 2.index start from 0.)
+
+6. multiply two integers using bitwise operators.additional operators cant be used .

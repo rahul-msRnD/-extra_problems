@@ -1,0 +1,16 @@
+1. Given a 6 digit number(x), return a 6 digit number(2*x) which is double of the input number and having all the digits same as input number. Extend this problem with (x*3),(x*4)....(*8).
+
+2. find base fibonacci representation of a given number.
+
+3. Identify the winner element in an array.
+   winner element is defined as set which has max sum of i-1,i,i+1 elements .
+   extend this problem with i-n to i+n .
+
+4. find the cost for winner element in an array .
+    winner element is defined as element which appears more    than k times in the array. There is no case of not finding winner element. If no element is found more than k times then cost is to be calculated.
+cost is defined as effort made to change other numbers to a number which repeats more than k times.
+cost for each number is abs(present number - changed number) 
+Ex: 1,1,2,2,3 and k=4 Ans : 2 (winner element may be 1 or 2)
+ for 1: 1,1,1,1,3 : cost of making two 2's to 1 is 2*(2-1) =2 
+
+5. convert base2 to base 8 without intermediate conversion to base 10.

@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int findn(int arr[])
+{
+    int i;
+    for(i=1;;)
+    {
+        if(arr[2*i]==0)
+            {
+                if(arr[i]>arr[i+1]) return i;
+                i=i + i/2;
+            }
+        if(arr[i]>arr[i-1])
+        {
+            if(arr[i]>arr[i+1]) return i;
+            i=i*2;
+        }
+        else if(arr[i]<arr[i-1] )
+        {
+            return i-1;
+        }
+    }
+}
+int main()
+{
+    int arr[]={1,13,14,15,16,17,19,18,0,0,0,0,0,0};
+    printf("%d",findn(arr));
+    return 0;
+}
