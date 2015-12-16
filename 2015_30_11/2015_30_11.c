@@ -108,12 +108,11 @@ LLnode* sortedMerge(LLnode* a,LLnode* b)
     return result;
 }
 
-//___________ Median of sorted list___________________//
+//______________ Median of sorted list___________________//
 int median(LLnode* head)
 {
     LLnode* p1=head->next;
     LLnode* p2=head;
-    //LLnode* p=NULL;
     while(p1!=NULL && p1->next!=NULL)
     {
         p2=p2->next;
@@ -191,4 +190,63 @@ void maxSumContiguousSubArray(int a[],int n)
         printf("\n%d",max);
     else
         printf("\n%d",max1);
+}
+
+
+//_______________find r when n1,n2 are given_______________//
+int find_R_givenN1_N2(int n1,int n2,int r)
+{
+    int rthN = 0,x=n1,y=n2,i;
+	for (i = 0; i < r; i++){
+		if (x < y)
+			rthN = x;
+		else
+			rthN = y;
+		if (rthN >= x)
+			x = x + n1;
+		if (rthN >= y)
+			y = y + n2;
+	}
+	return rthN;
+}
+
+
+//_________________add two linked lists____________________//
+LLnode* addLLinReverse(LLnode* head,LLnode* head1,LLnode* head2)
+{
+    int l=length(head);
+    int l1=length(head1);
+    if(l>l1)
+    {
+        int d= l-l1;
+        while(d!=0)
+        {
+            head1=insertAtEnd(head1,0);
+            d--;
+        }
+    }
+    else if(l1>l)
+    {
+        int d=l1-l;
+        while(d!=0)
+        {
+            head=insertAtEnd(head,0);
+            d--;
+        }
+    }
+    head=reverse2(head);
+    head1=reverse2(head1);
+    LLnode* p=head;
+    LLnode* p1=head1;
+    int res=0;
+    while(p!=NULL)
+    {
+        int add=p->data+p1->data+res;
+        head2=insertAtEnd(head2,add%10);
+        res=add/10;
+        p=p->next;
+        p1=p1->next;
+    }
+    head2=insertAtEnd(head2,res);
+    return reverse2(head2);
 }
