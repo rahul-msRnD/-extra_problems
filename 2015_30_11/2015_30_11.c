@@ -250,3 +250,27 @@ LLnode* addLLinReverse(LLnode* head,LLnode* head1,LLnode* head2)
     head2=insertAtEnd(head2,res);
     return reverse2(head2);
 }
+
+
+//______________print last 10 lines in a file___________//
+
+void lastNLinesInFile(FILE* fp)
+{
+    int offset = 0;
+    int line = 1;
+    char ch;
+    FILE* f = fp;
+    while(line < 20 && fp != f)
+    {
+        if(fseek(fp,-1*offset,SEEK_END)!=-1)
+        {
+            ch=fgetc(fp);
+            if(ch == '\n')
+                line++;
+        }
+        offset++;
+    }
+    char c;
+    while( ( c = fgetc(fp) ) != EOF )
+        printf("%c",c);
+}

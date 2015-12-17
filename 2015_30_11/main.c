@@ -47,6 +47,11 @@ int main()
     traverse(head2);
     */
 
+    //tests for last 10 lines of a file //
+    /*
+    FILE *fp=fopen("sample2.txt","r");
+    lastNLinesInFile(fp);
+    */
 
 
 
