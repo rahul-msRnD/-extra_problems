@@ -251,7 +251,6 @@ LLnode* addLLinReverse(LLnode* head,LLnode* head1,LLnode* head2)
     return reverse2(head2);
 }
 
-
 //______________print last 10 lines in a file___________//
 
 void lastNLinesInFile(FILE* fp)
@@ -274,3 +273,34 @@ void lastNLinesInFile(FILE* fp)
     while( ( c = fgetc(fp) ) != EOF )
         printf("%c",c);
 }
+
+
+//________sort LL which is sorted in inc Order but two numbers are exchanged_______//
+LLnode* sortLL2NumChanged(LLnode* head)
+{
+    LLnode *p=head->next;
+	LLnode *ptr1=head;
+	LLnode *ptr2=head;
+	while(p!=NULL)
+	{
+		if(ptr1->data > p->data)
+		{
+			ptr2=ptr2->next;
+			while(p->data <= ptr2->data)
+                ptr2 = ptr2->next;
+            int temp=ptr2->data;
+            ptr2->data=ptr1->data;
+            ptr1->data=temp;
+            break;
+		}
+		else
+		{
+			ptr1=ptr1->next;
+			p=p->next;
+			ptr2=ptr2->next;
+
+		}
+	}
+	return head;
+}
+

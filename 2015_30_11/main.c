@@ -6,7 +6,7 @@
 int main()
 {
     LLnode* head=NULL;
-    head=createRandomLL( 5,10);
+    //head=createRandomLL( 5,10);
     //traverse(head);
     // tests for reversing LL
     /*
@@ -53,6 +53,15 @@ int main()
     lastNLinesInFile(fp);
     */
 
+    //tests for sorting LL where num are exchanged//
+    head=insertAtEnd(head,1);
+    head=insertAtEnd(head,2);
+    head=insertAtEnd(head,3);
+    head=insertAtEnd(head,6);
+    head=insertAtEnd(head,5);
+    head=insertAtEnd(head,4);
+    head= sortLL2NumChanged(head);
+    traverse(head);
 
 
     return 0;
